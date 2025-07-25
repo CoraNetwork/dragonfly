@@ -109,8 +109,10 @@ func (blockPaletteEncoding) DecodeBlockState(m map[string]any) (uint32, error) {
 
 	v, ok := StateToRuntimeID(upgraded.Name, upgraded.Properties)
 	if !ok {
-		return 0, fmt.Errorf("cannot get runtime ID of block state %v{%+v} %v", upgraded.Name, upgraded.Properties, upgraded.Version)
+		air, _ := StateToRuntimeID("minecraft:air", nil)
+		return air, nil
 	}
+
 	return v, nil
 }
 
